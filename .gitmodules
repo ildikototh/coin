@@ -1,0 +1,6 @@
+[submodule "qunit"]
+	path = qunit
+	url = http://github.com/jquery/qunit
+[submodule "jquery"]
+	path = jquery
+	url = http://github.com/jquery/jquery
