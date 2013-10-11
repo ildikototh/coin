@@ -2,6 +2,7 @@ $.fn.coinCounter = function(amount,coins){
 	var quo = new Array();
 	var coinText = '';
 	var amountInP = '';
+	var separator = ', ';
 
 	//remove the last p if it's in an  amount
 	if (amount.slice(-1) == 'p' ){
@@ -14,6 +15,7 @@ $.fn.coinCounter = function(amount,coins){
 			amountInP = amount;
 		}
 	} else {
+		//replacing the pound symbol -> in this case amount is multipled by 100, because of the structure
 		amount = amount.replace(/\u00A3/g, '');
 		amountInP = 100*amount;
 	}
@@ -25,10 +27,11 @@ $.fn.coinCounter = function(amount,coins){
 		//left-over
 		amountInP = amountInP-(quo[coins[item].name]*coins[item].value);
 		if (quo[coins[item].name]!=0){
-			coinText = coinText + quo[coins[item].name] + '*' + coins[item].name +', ' ; 
+			coinText = coinText + quo[coins[item].name] + ' x ' + coins[item].name + separator ; 
 		}
-		//if no left-over then sip
+		//if no left-over then exit from the loop and remove the last separator
 		if (amountInP == 0) {
+			coinText.replace(/\, $/g, '');
 			return false;
 		}
 	});
