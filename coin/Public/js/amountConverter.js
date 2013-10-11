@@ -20,6 +20,7 @@ function amountConvert(amount) {
     } else {
         if (amount.indexOf('.') != -1){
             amount = amount.replace(/\u00A3/g, '');
+            amount =  Number(amount).toFixed(2);
             amountInP = 100*amount;
         } else if (amount.charAt(0) == '\u00A3'){
             amount = amount.replace(/\u00A3/g, '');

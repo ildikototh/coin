@@ -1,6 +1,5 @@
 $.fn.inputChecker = function(){
 	var messageTextElement = $('[data-role="result"]');
-	//var regex = /£?([0-9])+(.)?([0-9])*(p)?$/;
 	//checking keypressing
 	$(this).keypress(function(e) {
 		messageTextElement.html('').hide();
