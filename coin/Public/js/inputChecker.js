@@ -1,6 +1,6 @@
 $.fn.inputChecker = function(){
 	var messageTextElement = $('[data-role="result"]');
-	var regex = /£?([0-9])+(.)?([0-9])*(p)?$/;
+	//var regex = /Â£?([0-9])+(.)?([0-9])*(p)?$/;
 	//checking keypressing
 	$(this).keypress(function(e) {
 		messageTextElement.html('').hide();
@@ -10,7 +10,7 @@ $.fn.inputChecker = function(){
         	e.preventDefault();
         	var amount = $(this).val();
         	if (amount) {
-        		if(amount.match(regex))
+        		if(validate(amount))
         		{
         			var coins = $(this).availableCoins();
         			messageTextElement.html($(this).coinCounter(amount,coins)).show();
