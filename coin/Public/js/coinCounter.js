@@ -2,11 +2,11 @@ $.fn.coinCounter = function(amount,coins){
 	var quo = new Array();
 	var coinText = '';
 	var amountInP = '';
-	var separator = ', ';
 
 	//remove the last p if it's in an  amount
 	if (amount.slice(-1) == 'p' ){
 		amount = amount.substring(0, amount.length - 1);
+		amountInP = amount;
 		//when the amount also contains pound symbol remove that but the result will counted in pound
 		if (amount.indexOf('\u00A3') != -1){
 			amount = amount.replace(/\u00A3/g, '');
@@ -27,11 +27,11 @@ $.fn.coinCounter = function(amount,coins){
 		//left-over
 		amountInP = amountInP-(quo[coins[item].name]*coins[item].value);
 		if (quo[coins[item].name]!=0){
-			coinText = coinText + quo[coins[item].name] + ' x ' + coins[item].name + separator ; 
+			coinText = coinText + quo[coins[item].name] + ' x ' + coins[item].name +', ' ; 
 		}
-		//if no left-over then exit from the loop and remove the last separator
+		//if no left-over then quit from the loop and remove the last comma
 		if (amountInP == 0) {
-			coinText.replace(/\, $/g, '');
+			coinText = coinText.replace(/\, $/g, '');
 			return false;
 		}
 	});
